@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="{{path('addp',{'s':s,'idc':idc})}}">  Ajouter
+
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('chercher',{'s':s,'idc':idc})}}">Chercher</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('infos',{'s':s,'idc':idc})}}">A propos du compte</a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link" href="{{path('logoutu')}}">Quitter</a>
+        </li>
+      </ul>
+  </div>
+</nav>	
+<center> <h1> Liste des pieces </h1> </center>
+<table border="1" class = "table table-hover" width="100%" >
+	<tr>
+		<td>
+		<p align="center">Nom de l'utilisateur</td>
+		<td>
+		<p align="center">Product Number</td>
+		<td>
+		<p align="center">Company</td>
+		<td>
+		<p align="center">Date</td>
+		<td>
+		<p align="center">Drawing Number</td>
+		<td>
+		<p align="center">Production Number</td>
+		<td>
+		<p align="center">Type Key List</td>
+		<td>
+		<p align="center">Description</td>
+		<td>
+		<p align="center">Code</td>
+		<td>
+		<p align="center">Modification</td>
+	</tr>
+	
+    {% for p in pieces %}
+	
+	<tr>	
+		<td>
+		<p align="center">{{p.utilisateur}}</td>
+		<td>
+		<p align="center">{{p.Prductnumber}}</td>
+		<td>	
+		<p align="center">{{p.societe}}</td>
+		<td>
+		<p align="center">{{p.Date|date('d-m-y')}}</td>
+		<td>
+		<p align="center">{{p.drawingnumber}}</td>
+		<td>
+		<p align="center">{{p.productionnum}}</td>
+		<td>
+		<p align="center">{{p.typekeylist}}</td>
+		<td>
+		<p align="center">{{p.description}}</td>
+		<td>
+		<p align="center">{{p.Id}} </td>
+		{% if p.utilisateur is same as s %}
+	<td>
+		<p align="center"> <a href="{{ path('updatepu' ,{'id':p.Id,'s':s,'idc':idc} ) }}" > <button type="button" class="btn btn-secondary"> Modifier</button> </a></td>
+	{% else %}
+	<td>
+		<p align="center">Modifier</td>
+
+	{% endif %}
+	</tr>
+	
+{% endfor %}
+
+</td>
+</tr>
+</table>
+
+{% endblock %} 

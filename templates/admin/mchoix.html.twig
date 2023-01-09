@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+       
+		 <li class="nav-item">
+          <a class="nav-link" href="{{path('searchp',{'s':s,'idc':idc})}}">Chercher une piece</a>
+        </li>
+		
+         <li class="nav-item">
+          <a class="nav-link active" href="{{ path('inter',{'s':s,'idc':idc})}}">Retour a la page principale
+          </a>
+		</li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('logouta')}}">Quitter</a>
+        </li>
+       
+      </ul>
+  </div>
+</nav>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<center>
+<table>
+<tr>
+<td>
+<a href="{{ path('searchid',{'s':s,'idc':idc}) }}" > <button type="button" class="btn btn-secondary">CHERCHER AVEC ID</button></a>  </td>
+<td>   OU   </td>
+<td>
+<a href="{{ path('searchname',{'s':s,'idc':idc}) }}" > <button type="button" class="btn btn-secondary">CHERCHER AVEC NOM UTILISATEUR</button></a> </td>
+</tr>
+</table>    
+</center>
+{% endblock %}

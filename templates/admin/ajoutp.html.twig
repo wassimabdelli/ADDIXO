@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+       <li class="nav-item">
+          <a class="nav-link active" href="{{ path('inter',{'s':s,'idc':idc})}}">Retour a la page principale
+           <span class="visually-hidden">(current)</span>
+          </a>
+		</li>
+      
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('users',{'s':s,'idc':idc})}}">Voir tous les utilisateurs</a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link" href="{{path('admins',{'s':s,'idc':idc})}}">Voir tous les Administrateurs</a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link" href="{{path('searchp',{'s':s,'idc':idc})}}">Chercher une piece</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="{{path('choixch',{'s':s,'idc':idc})}}">Chercher un utilisateur</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="{{path('infosc',{'s':s,'idc':idc})}}">A propos du compte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('logouta')}}">Quitter</a>
+        </li>
+       
+      </ul>
+  </div>
+</nav>
+
+
+{{form_start(f)}}
+
+<table border="0" width="100%">
+<tr>
+<td width="45%"> <p align="center"> Nom d'utilisateur</p><p>&nbsp;</p></td> <td> <p align="left">  {{form_widget(f.utilisateur,{'attr':{'value ':s}} )}} *<p>&nbsp;</p></td></td> <td>{{form_errors(f.utilisateur)}}  <p>&nbsp;</p> </td>
+</tr>
+
+<tr>
+<td> <p align="center">  Product Number :<p>&nbsp;</p> </td> <td>  <p align="left">  {{form_widget(f.prductnumber)}} *<p>&nbsp;</p> </td><td>{{form_errors(f.prductnumber)}}    <p>&nbsp;</p> </td>
+</tr>
+
+ <tr>
+<td> <p align="center">  Company :<p>&nbsp;</p> </td> <td>  <p align="left">  {{form_widget(f.societe)}}<p>&nbsp;</p> </td>   
+</tr>
+
+   <tr>
+<td> <p align="center">  Date : <p>&nbsp;</p> </td> <td>  <p align="left">  {{form_widget(f.date)}}<p>&nbsp;</p> </td>
+</tr>
+
+   <tr>
+<td> <p align="center">  Drawing Number :<p>&nbsp;</p> </td> <td>  <p align="left">  {{form_widget(f.drawingnumber)}}<p>&nbsp;</p> </td>
+</tr>
+
+   <tr>
+<td> <p align="center">  Production Number : <p>&nbsp;</p> </td> <td>  <p align="left">  {{form_widget(f.productionnum)}}<p>&nbsp;</p> </td>
+</tr>
+ 
+   <tr>
+<td> <p align="center">  Type Key List :<p>&nbsp;</p> </td> <td>  <p align="left"> {{form_widget(f.typekeylist)}} *<p>&nbsp; </p></td><td>{{form_errors(f.typekeylist)}} <p>&nbsp;</p> </td>
+</tr>
+
+   <tr>
+<td> <p align="center">  Description :<p>&nbsp;</p> </td> <td>  <p align="left">  {{form_widget(f.description)}}<p>&nbsp;</p> </td>
+</tr>
+  <tr>
+{{form_start(fo)}}
+ <td>  <p align="center"> Nombre d'ajout  : </td>   <td>{{form_widget(fo.boucle)}} <br> <font size="4px"> (si la valeur entré sera null ou 0 sera ajouter une seule fois) </front> </td> 
+ </tr>
+{{form_end(fo)}}
+<tr>   <td > <p>&nbsp;</p> <p align="right">  <button type="submit" Formnovalidate  > Enregistrer </button> </td > <td></td> <td></td>  <td> <p align="right"> <font color="red" > <u> NB : les champ contient une " * "  sont obligatoire .</u> </font> </td>  </tr> 
+
+{{form_end(f)}}
+ {% endblock %} 

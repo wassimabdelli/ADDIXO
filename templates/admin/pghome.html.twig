@@ -1,0 +1,90 @@
+	{% extends 'base.html.twig' %}
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active"  href="{{path('addpadmin',{'s':s,'idc':idc})}}">Ajouter
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('users',{'s':s,'idc':idc})}}">Voir tous les utilisateurs</a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link" href="{{path('admins',{'s':s,'idc':idc})}}">Voir tous les Administrateurs</a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link" href="{{path('searchp',{'s':s,'idc':idc})}}">Chercher une piece</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="{{path('choixch',{'s':s,'idc':idc})}}">Chercher un utilisateur</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="{{path('infosc',{'s':s,'idc':idc})}}">A propos du compte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('logouta')}}">Quitter</a>
+        </li>
+       
+      </ul>
+  </div>
+</nav>
+<br>
+
+<center><h2> Liste des pieces </h2></center>
+<table border="0" width="100%" class = "table table-hover">
+
+	<tr>
+		<td>
+		<p align="center">Nom de l'utilisateur</td>
+		<td>
+		<p align="center">Product Number</td>
+		<td>
+		<p align="center">Company</td>
+		<td>
+		<p align="center">Date</td>
+		<td>
+		<p align="center">Drawing Number</td>
+		<td>
+		<p align="center">Production Number</td>
+		<td>
+		<p align="center">Type Key List</td>
+		<td>
+		<p align="center">Description</td>
+		<td>
+		<p align="center">Code</td>		
+		
+		<td>
+		<p align="center">Modifier</td>
+		<td>	
+		<p align="center">Supprimer</td>
+	</tr>
+    {% for ps in pieces %}
+	{% set id = ps.id %}
+	<tr>
+		<td>
+		<p align="center">{{ps.utilisateur}}</td>
+		<td>
+		<p align="center">{{ps.prductnumber}}</td>
+		<td>
+		<p align="center">{{ps.societe}}</td>
+		<td>
+		<p align="center">{{ps.Date|date('d-m-y')}}</td>
+		<td>
+		<p align="center">{{ps.drawingnumber}}</td>
+		<td>
+		<p align="center">{{ps.productionnum}}</td>
+		<td>
+		<p align="center">{{ps.typekeylist}}</td>
+		<td>
+		<p align="center">{{ps.description}}</td>
+		<td>
+		<p align="center">{{id}}</td>
+		<td> <p align="center"> <a href="{{ path('updatep',{'id':id,'s':s,'idc':idc} ) }}" > <button type="button" class="btn btn-secondary">MODIFIER</button> </a> </td>
+		<td> <p align="center"> <a href="{{ path('supprp',{'id':id,'s':s,'idc':idc} ) }}" ><button type="button" class="btn btn-secondary">SUPPRIMER</button></a> </td>
+	</tr>
+{% endfor %}
+</table>
+
+{% endblock %}

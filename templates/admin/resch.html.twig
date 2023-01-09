@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active"  href="{{path('addpadmin',{'s':s,'idc':idc})}}">Ajouter
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('users',{'s':s,'idc':idc})}}">Voir tous les utilisateurs</a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link" href="{{path('admins',{'s':s,'idc':idc})}}">Voir tous les Administrateurs</a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link" href="{{path('searchp',{'s':s,'idc':idc})}}">Chercher une piece</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="{{path('choixch',{'s':s,'idc':idc})}}">Chercher un utilisateur</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="{{path('infosc',{'s':s,'idc':idc})}}">A propos du compte</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="{{path('inter',{'s':s,'idc':idc})}}">Retour a la page principale</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('logouta')}}">Quitter</a>
+        </li>
+      </ul>
+  </div>
+</nav>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+{% if res is not null %}
+<center>
+<h2> Voila la resultat de la recherche : </h2>
+<p>&nbsp;</p>
+<table border="1" class = "table table-hover">
+	<tr>
+		<td>
+		<p align="center">Nom de l'utilisateur</td>
+		<td>
+		<p align="center">Product Number</td>
+		<td>
+		<p align="center">Company</td>
+		<td>
+		<p align="center">Date</td>
+		<td>
+		<p align="center">Drawing Number</td>
+		<td>
+		<p align="center">Production Number</td>
+		<td>
+		<p align="center">Type Key List</td>
+		<td>
+		<p align="center">Description</td>
+		<td>
+		<p align="center">Code</td>
+		<td>
+		<p align="center">Modifier</td>
+		<td>
+		<p align="center">Supprimer</td>
+
+<tr>	
+
+		<td>
+		<p align="center">{{res.utilisateur}}</td>
+		<td>
+		<p align="center">{{res.Prductnumber}}</td>
+		<td>	
+		<p align="center">{{res.societe}}</td>
+		<td>
+		<p align="center">{{res.Date|date('d-m-y')}}</td>
+		<td>
+		<p align="center">{{res.drawingnumber}}</td>
+		<td>
+		<p align="center">{{res.productionnum}}</td>
+		<td>
+		<p align="center">{{res.typekeylist}}</td>
+		<td>
+		<p align="center">{{res.description}}</td>
+		<td>
+		<p align="center">{{res.Id}}</td>
+		<td>
+		<p align="center"> <a href="{{ path('updatep' ,{'id':res.Id,'s':s,'idc':idc} ) }}" > <button type="submit" class="btn btn-secondary">MODIFIER</button></a></td>
+		<td>
+		<p align="center"> <a href="{{ path('supprp' ,{'id':res.Id,'s':s,'idc':idc} ) }}" > <button type="submit" class="btn btn-secondary">SUPPRIMER</button></a></td>
+
+</tr>		
+</table>
+</center>
+ {% else %}
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+ <center><h1> Aucune resultat trouvée!!! </h1> </center>
+ {% endif %}
+{% endblock %}

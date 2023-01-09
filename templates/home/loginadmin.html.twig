@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+{{form_start(form)}}
+<table border="0" width="100%" class = "table table-hover">
+<tr>  <td colspan="2" > <p align="center"><font size="8px"> <b> Entrer vos informations </b></font> <p>&nbsp;</p> </td>  </tr>
+<tr>
+<td width="45%"> <p align="right"> Nom de l'admin</p></td> <td> <p align="left">  {{form_widget(form.name)}}</td> <td> {{form_errors(form.name)}} </td>
+</tr>
+<tr>
+<td> <p align="right">   Mot de passe de l'admin </td> <td>  <p align="left">  {{form_widget(form.password)}} </td> <td> {{form_errors(form.name)}} </td>
+</tr>
+<tr>  <td ></td> <td >  <p align="left"> <button type="submit" class="btn btn-secondary">SE CONNECTER</button>  </td >  </tr> 
+{{form_end(form)}} 
+<br>
+{% for em in app.flashes('e') %}
+    <div>
+        <h1 align="center" >{{ em }}</h1>
+    </div>  
+{% endfor %}
+{% endblock %}

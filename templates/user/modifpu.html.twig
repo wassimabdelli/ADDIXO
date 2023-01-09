@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+         <li class="nav-item">
+          <a class="nav-link active" href="{{path('addp',{'s':s,'idc':idc})}}">  Ajouter
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('chercher',{'s':s,'idc':idc})}}">Chercher</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('infos',{'s':s,'idc':idc})}}">A propos du compte</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link " href="{{path('interfaceu',{'s':s,'idc':idc})}}">Retour a la page principale</a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link" href="{{path('logoutu')}}">Quitter</a>
+        </li>
+      </ul>
+  </div>
+</nav>	
+{{form_start(fp)}}
+
+<table border="0" width="100%" class = "table table-hover">
+<tr>
+<td width="45%"> <p align="center"> Nom d'utilisateur</p><p>&nbsp;</p></td> <td> <p align="left">  {{form_widget(fp.utilisateur )}} *<p>&nbsp;</p></td>
+</tr>
+
+<tr>
+<td> <p align="center">  Product Number :<p>&nbsp;</p> </td> <td>  <p align="left">  {{form_widget(fp.prductnumber)}} *<p>&nbsp;</p> </td>
+</tr>
+
+   <tr>
+<td> <p align="center">  Company :  <p>&nbsp;</p></td> <td>  <p align="left">  {{form_widget(fp.societe)}} <p>&nbsp;</p></td> <td>{{form_errors(fp.societe)}}  <p>&nbsp;</p></td> 
+</tr>
+
+   <tr>
+<td> <p align="center">  Date : <p>&nbsp;</p> </td> <td>  <p align="left">  {{form_widget(fp.date)}} <p>&nbsp;</p> </td>
+</tr>
+
+   <tr>
+<td> <p align="center">  Drawing Number :<p>&nbsp;</p> </td> <td>  <p align="left">  {{form_widget(fp.drawingnumber)}}<p>&nbsp;</p> </td>
+</tr>
+
+   <tr>
+<td> <p align="center">  Production Number : <p>&nbsp;</p> </td> <td>  <p align="left">  {{form_widget(fp.productionnum)}}<p>&nbsp;</p> </td>
+</tr>
+
+   <tr>
+<td> <p align="center">  Type Key List :<p>&nbsp;</p> </td> <td>  <p align="left">  {{form_widget(fp.typekeylist)}} * <p>&nbsp;</p></td>
+</tr>
+
+   <tr>
+<td> <p align="center">  Description :<p>&nbsp;</p> </td> <td>  <p align="left">  {{form_widget(fp.description)}}<p>&nbsp;</p> </td>
+</tr>
+<tr>   <td >  <p align="right"> <button type="submit" class="btn btn-secondary">MODIFIER</button></td > <td> <p align="right"> <font color="red" > <u> NB : les champ contient une " * "  sont obligatoire .</u> </font> </td>  </tr> 
+{{form_end(fp)}}
+{% endblock %}

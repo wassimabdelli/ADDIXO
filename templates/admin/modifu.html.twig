@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+       <li class="nav-item">
+          <a class="nav-link active" href="{{ path('inter',{'s':s,'idc':idc})}}">Retour a la page principale
+           <span class="visually-hidden">(current)</span>
+          </a>
+		</li>
+      
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('users',{'s':s,'idc':idc})}}">Voir tous les utilisateurs</a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link" href="{{path('admins',{'s':s,'idc':idc})}}">Voir tous les Administrateurs</a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link" href="{{path('searchp',{'s':s,'idc':idc})}}">Chercher une piece</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="{{path('choixch',{'s':s,'idc':idc})}}">Chercher un utilisateur</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="{{path('infosc',{'s':s,'idc':idc})}}">A propos du compte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('logouta')}}">Quitter</a>
+        </li>
+       
+      </ul>
+  </div>
+</nav>
+
+{{form_start(f)}}
+
+<table border="0" width="100%"  class = "table table-hover">
+<tr>
+<td> <p align="left"> Prénom</p><p>&nbsp;</p></td> <td>  {{form_widget(f.fname )}} *</td>
+</tr>
+
+<tr>
+<td> <p align="left"> Nom :  </td> <td>    {{form_widget(f.lname)}} *<p>&nbsp;</p> </td>
+</tr>
+
+   <tr>
+<td><p align="left"> Nom utiAlisateur :  <p>&nbsp;</p></td> <td>   {{form_widget(f.name)}} *<p>&nbsp;</p> </td>
+</tr>
+
+   <tr>
+<td> <p align="left">  Mot de passe : <p>&nbsp;</p> </td> <td>  {{form_widget(f.password)}} * <p>&nbsp;</p> </td>
+</tr>
+
+   <tr>
+<td><p align="left">e-mail : <p>&nbsp;</p> </td> <td> {{form_widget(f.email)}}<p>&nbsp;</p> </td>
+</tr>
+
+   <tr>
+<td> <p align="left"> Description :  <p>&nbsp;</p> </td> <td> {{form_widget(f.description)}}<p>&nbsp;</p> </td>
+</tr>
+
+   <tr>
+<td><p align="left"> City : <p>&nbsp;</p> </td> <td> {{form_widget(f.ville)}}  <p>&nbsp;</p></td>
+</tr>
+<tr> 
+ <td ><p align="center  ">  <button type="submit" class="btn btn-secondary"Formnovalidate> MODIFIER </button></td > 
+ <td> <p align="center"> <font color="red" > <u> NB : les champ contient une " * "  sont obligatoire .</u> </font> </td>  </tr> 
+
+{{form_end(f)}}
+{% for ER in app.flashes('modifER') %}
+    <div>
+        <h1 align="center" >{{ ER }}</h1>
+    </div>  
+{% endfor %}
+{% endblock %}

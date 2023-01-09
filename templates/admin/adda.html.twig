@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+       <li class="nav-item">
+          <a class="nav-link active" href="{{ path('inter',{'s':s,'idc':idc})}}">Retour a la page principale
+           <span class="visually-hidden">(current)</span>
+          </a>
+		</li>
+      
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('users',{'s':s,'idc':idc})}}">Voir tous les utilisateurs</a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link" href="{{path('admins',{'s':s,'idc':idc})}}">Voir tous les Administrateurs</a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link" href="{{path('searchp',{'s':s,'idc':idc})}}">Chercher une piece</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="{{path('choixch',{'s':s,'idc':idc})}}">Chercher un utilisateur</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="{{path('infosc',{'s':s,'idc':idc})}}">A propos du compte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('logouta')}}">Quitter</a>
+        </li>
+       
+      </ul>
+  </div>
+</nav>
+
+{{form_start(fu)}}
+
+<table border="0" width="100%" class = "table table-hover">
+<tr>
+<td> Nom utilisateur :  <p>&nbsp;</p></td> <td>  <p align="left"> {{form_widget(fu.name,{'attr':{'placeholder ':'choisirr un nom'}})}} *<p>&nbsp;</p> </td> <td>  {{form_errors(fu.name)}} </td>
+</tr>
+
+   <tr>
+<td> Mot de passe : <p>&nbsp;</p> </td> <td>  <p align="left">  {{form_widget(fu.password)}} * <p>&nbsp;</p> </td> <td>  {{form_errors(fu.password)}} </td>
+</tr>
+
+<tr>   <td >  <p align="center"> <button type="submit" class="btn btn-secondary" Formnovalidate>ENREGISTRER</button> </td >
+
+
+
+<td> <p align="center"> <font color="red" > <u> NB : les champ contient une " * "  sont obligatoire .</u> </font> </td>  </tr> 
+
+{{form_end(fu)}}
+{% for mdp in app.flashes('ermdp') %}
+    <div>
+        <h1 align="center" >{{ mdp }}</h1>
+    </div>  
+{% endfor %}
+
+{% endblock %}  

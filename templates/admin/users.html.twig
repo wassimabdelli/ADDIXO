@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ path('addu',{'s':s,'idc':idc})}}">Ajouter un utilisateur
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link" href="{{path('searchp',{'s':s,'idc':idc})}}">Chercher une piece</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="{{path('choixch',{'s':s,'idc':idc})}}">Chercher un utilisateur</a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link " href="{{ path('inter',{'s':s,'idc':idc})}}">Retour a la page principale
+          </a>
+		</li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('logouta')}}">Quitter</a>
+        </li>
+       
+      </ul>
+  </div>
+</nav>
+<br>
+<table border="1" width="100%" class = "table table-hover">
+	<tr>
+		<td>
+		<p align="center">Prénom : </td>
+		<td>
+		<p align="center">Nom : </td>
+		<td>
+		<p align="center">Nom utilisateur</td>
+		<td>
+		<p align="center">Mot de passe : </td>
+		<td>
+		<p align="center">e-mail</td>
+		<td>
+		<p align="center">Description : </td>
+		<td>
+		<p align="center">City</td>
+		
+        <td>
+		<p align="center">Modifier</td>
+        <td>
+		<p align="center">Supprimer</td>
+	</tr>
+      {% for user in u %}
+	<tr>
+		<td>
+		<p align="center">{{user.fname}}</td>
+		<td>
+		<p align="center">{{user.lname}}</td>
+		<td>
+		<p align="center">{{user.name}}</td>
+		<td>
+		<p align="center">{{user.password}}</td>
+		<td>
+		<p align="center">{{user.email}}</td>
+		<td>
+		<p align="center">{{user.description}}</td>
+		<td>
+		<p align="center">{{user.ville}}</td>
+        <td> <p align="center"> <a href="{{ path('updateu' ,{'id':user.id,'s':s,'idc':idc} ) }}" >  <button type="button" class="btn btn-secondary">MODIFIER</button></a> </td>
+		 <td> <p align="center"> <a href="{{ path('suppru' ,{'id':user.id,'s':s,'idc':idc} ) }}" > <button type="button" class="btn btn-secondary">SUPPRIMER</button></a> </td>
+		
+	</tr>
+    {% endfor %}
+</table>
+<p>&nbsp;</p>
+ </center>
+{% endblock %}

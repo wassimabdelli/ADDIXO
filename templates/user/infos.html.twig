@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+{% block body %} 
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="{{path('addp',{'s':s,'idc':idc})}}">Ajouter
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('chercher',{'s':s,'idc':idc  })}}">Chercher</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('interfaceu',{'s':s,'idc':idc})}}">Retour a la page principale</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('logoutu')}}">Quitter</a>
+        </li>
+        
+      </ul>
+  </div>
+</nav>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<center>  
+<b>  Bienvenue Mr(s)  <u>{{infos.lname}} </u>  </b>
+<p>&nbsp;</p>
+<table  class = "table table-hover" >
+
+<tr>
+<td> <p align="center"> Identifiant du compte :</td> <td> {{infos.id}}</td>
+</tr>
+
+<td><p align="center">Prénom : </td><td>{{infos.fname}}</td>
+</tr>
+
+<tr>
+<td><p align="center">Nom :</td><td> {{infos.lname}}</td>
+</tr>
+
+<tr>
+<td><p align="center">Nom Utilisateur :</td> <td>{{infos.name}}</td>
+</tr>
+
+<tr>
+<td><p align="center">E-mail :</td><td> {{infos.email}}</td>
+</tr>
+
+<tr>
+<td><p align="center">Ville :</td> <td>{{infos.ville}}</td>
+</tr>
+
+<tr>
+<td><p align="center">Description :</td> <td>{{infos.description}}</td>
+</tr>
+</table>
+<center>
+{% endblock %}

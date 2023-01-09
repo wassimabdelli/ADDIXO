@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+       <li class="nav-item">
+          <a class="nav-link active" href="{{ path('inter',{'s':s,'idc':idc})}}">Retour a la page principale
+           <span class="visually-hidden">(current)</span>
+          </a>
+		</li>
+      
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('users',{'s':s,'idc':idc})}}">Voir tous les utilisateurs</a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link" href="{{path('admins',{'s':s,'idc':idc})}}">Voir tous les Administrateurs</a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link" href="{{path('searchp',{'s':s,'idc':idc})}}">Chercher une piece</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="{{path('choixch',{'s':s,'idc':idc})}}">Chercher un utilisateur</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="{{path('infosc',{'s':s,'idc':idc})}}">A propos du compte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('logouta')}}">Quitter</a>
+        </li>
+       
+      </ul>
+  </div>
+</nav>
+<center> <h3> Confirmer la suppression ?</h3> </center>
+{{form_start(fps)}}
+
+<table border="0" width="100%"class = "table table-hover">
+<tr>
+<td > Nom d'utilisateur</p><p>&nbsp;</p></td> <td>  {{form_widget(fps.utilisateur )}} *<p>&nbsp;</p></td>
+</tr>
+
+<tr>
+<td> Product Number :<p>&nbsp;</p> </td> <td>{{form_widget(fps.prductnumber)}} *<p>&nbsp;</p> </td>
+</tr>
+
+   <tr>
+<td>Company :  <p>&nbsp;</p></td> <td>{{form_widget(fps.societe)}} *<p>&nbsp;</p></td> <td>{{form_errors(fps.societe)}}  <p>&nbsp;</p></td> 
+</tr>
+
+   <tr>
+<td> Date : <p>&nbsp;</p> </td> <td> {{form_widget(fps.date)}} <p>&nbsp;</p> </td>
+</tr>
+
+   <tr>
+<td> Drawing Number :<p>&nbsp;</p> </td> <td> {{form_widget(fps.drawingnumber)}}<p>&nbsp;</p> </td>
+</tr>
+
+   <tr>
+<td> Production Number : <p>&nbsp;</p> </td> <td> {{form_widget(fps.productionnum)}}<p>&nbsp;</p> </td>
+</tr>
+
+   <tr>
+<td> Type Key List :<p>&nbsp;</p> </td> <td>{{form_widget(fps.typekeylist)}} * <p>&nbsp;</p></td>
+</tr>
+
+   <tr>
+<td> Description :<p>&nbsp;</p> </td> <td>{{form_widget(fps.description)}}<p>&nbsp;</p> </td>
+</tr>
+<tr>   <td >  <p align="center">  <button type="submit"  class="btn btn-secondary" Formnovalidate  > SUPPRIMER </button> </td >
+ <td> <font color="red" > <u> NB : les champ contient une " * "  sont obligatoire .</u> </font> </td>  </tr> 
+{{form_end(fps)}}
+ {% endblock %} 

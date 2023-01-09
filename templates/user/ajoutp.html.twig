@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+      
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('chercher',{'s':s,'idc':idc})}}">Chercher</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('infos',{'s':s,'idc':idc})}}">A propos du compte</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link active" href="{{path('interfaceu',{'s':s,'idc':idc})}}">Retour a la page principale</a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link" href="{{path('logoutu')}}">Quitter</a>
+        </li>
+      </ul>
+  </div>
+</nav>	
+<p>&nbsp;</p>
+<center>
+{{form_start(f)}}
+<table border="0" class = "table table-hover">
+<tr>
+<td ><p align="center"> Nom d'utilisateur<p>&nbsp;</p></td> <td>   {{form_widget(f.utilisateur ,{'attr':{'value ':s}} )}} *<p>&nbsp;</p></td></td> <td>{{form_errors(f.utilisateur)}}  </td>
+</tr>
+<tr>
+<td><p align="center">  Product Number :</td> <td>  {{form_widget(f.prductnumber)}} *</td><td>{{form_errors(f.prductnumber)}}  </td>
+</tr>
+
+ <tr>
+<td><p align="center">Company :</td> <td>  {{form_widget(f.societe)}} </td>   
+</tr>
+
+   <tr>
+<td><p align="center">Date :  </td> <td>    {{form_widget(f.date,)}} </td>
+</tr>
+
+   <tr>
+<td><p align="center"> Drawing Number :</td> <td>   {{form_widget(f.drawingnumber)}} </td>
+</tr>
+
+   <tr>
+<td><p align="center">  Production Number : <p>&nbsp;</p> </td> <td>  {{form_widget(f.productionnum)}} </td>
+</tr>
+
+   <tr>
+<td><p align="center"> Type Key List : </td> <td>  {{form_widget(f.typekeylist)}} * </td><td>{{form_errors(f.typekeylist)}}  </td>
+</tr>
+
+   <tr>
+<td><p align="center">   Description :</td> <td> {{form_widget(f.description)}}</td>
+</tr>
+   <tr>
+{{form_start(fo)}}
+ <td>  <p align="center"> Nombre d'ajout  : </td>   <td>{{form_widget(fo.boucle)}} <br> <font size="4px"> (si la valeur entré sera null ou 0 sera ajouter une seule fois) </front> </td> 
+ </tr>
+{{form_end(fo)}}
+<tr>  <td ><p align="right"> <button type="submit" class="btn btn-secondary" Formnovalidate>ENREGISTRER</button> </td > 
+
+<td><p align="right ">  <font color="red" > <u> NB : les champ contient une " * "  sont obligatoire .</u> </font> </td>  </tr> 
+
+{{form_end(f)}}
+
+</center>  
+{% endblock %}
+

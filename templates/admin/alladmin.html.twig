@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ path('adda',{'s':s,'idc':idc})}}">Ajouter un admin
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active"  href="{{ path('addu',{'s':s,'idc':idc})}}">Ajouter un utilisateur
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+		 <li class="nav-item">
+          <a class="nav-link" href="{{path('searchp',{'s':s,'idc':idc})}}">Chercher une piece</a>
+        </li>
+		<li class="nav-item">
+          <a class="nav-link" href="{{path('choixch',{'s':s,'idc':idc})}}">Chercher un utilisateur</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link active" href="{{ path('inter',{'s':s,'idc':idc})}}">Retour a la page principale
+          </a>
+		</li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('logouta')}}">Quitter</a>
+        </li>
+       
+      </ul>
+  </div>
+</nav>
+<br>
+<table border="1" width="100%" class = "table table-hover">
+	<tr>
+	
+		<td>
+		<p align="center">Nom utilisateur</td>
+		<td>
+		<p align="center">Mot de passe : </td>
+    	<td>
+		<p align="center">Modifier</td>
+		</tr>
+      {% for ad in admins %}
+	<tr>
+		<td>
+		<p align="center">{{ad.name}}</td>
+		<td>
+		<p align="center">{{ad.password}}</td>
+    <td> <p align="center"> <a href="{{ path('updateA' ,{'id':ad.id,'s':s,'idc':idc} ) }}" >  <button type="button" class="btn btn-secondary">MODIFIER</button></a> </td>
+	</tr>
+    {% endfor %}
+</table>
+<p>&nbsp;</p>
+ </center>
+{% endblock %}
